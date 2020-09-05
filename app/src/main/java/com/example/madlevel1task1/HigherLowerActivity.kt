@@ -2,6 +2,7 @@ package com.example.madlevel1task1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.madlevel1task1.databinding.ActivityHigherLowerBinding
 
 class HigherLowerActivity : AppCompatActivity() {
@@ -23,5 +24,37 @@ class HigherLowerActivity : AppCompatActivity() {
 
     private fun updateUI() {
         binding.tvLastThrow.text = getString(R.string.last_throw, lastThrow)
+    }
+    private fun rollDice(){
+        lastThrow = currentThrow
+        currentThrow - (1..6).random()
+        updateUI()
+    }
+    private fun onAnswerCorrect(){
+        Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show()
+    }
+    private fun onAnswerIncorrect(){
+        Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show()
+    }
+    private fun onHigherClick(){
+        rollDice()
+        if(lastThrow<currentThrow){
+            onAnswerCorrect()
+        }else
+            onAnswerIncorrect()
+    }
+    private fun onLowerClick(){
+        rollDice()
+        if(lastThrow>currentThrow){
+            onAnswerCorrect()
+        }else
+            onAnswerIncorrect()
+    }
+    private fun onEqualClick(){
+        rollDice()
+        if(lastThrow==currentThrow){
+            onAnswerCorrect()
+        }else
+            onAnswerIncorrect()
     }
 }
