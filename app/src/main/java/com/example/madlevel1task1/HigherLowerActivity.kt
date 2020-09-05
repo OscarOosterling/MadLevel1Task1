@@ -19,6 +19,15 @@ class HigherLowerActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        binding.btnLower.setOnClickListener(){
+            onLowerClick()
+        }
+        binding.btnEqual.setOnClickListener(){
+            onEqualClick()
+        }
+        binding.btnHigher.setOnClickListener(){
+            onHigherClick()
+        }
         updateUI()
     }
 
@@ -27,7 +36,7 @@ class HigherLowerActivity : AppCompatActivity() {
     }
     private fun rollDice(){
         lastThrow = currentThrow
-        currentThrow - (1..6).random()
+        currentThrow = (1..6).random()
         updateUI()
     }
     private fun onAnswerCorrect(){
@@ -38,14 +47,14 @@ class HigherLowerActivity : AppCompatActivity() {
     }
     private fun onHigherClick(){
         rollDice()
-        if(lastThrow<currentThrow){
+        if(currentThrow>lastThrow){
             onAnswerCorrect()
         }else
             onAnswerIncorrect()
     }
     private fun onLowerClick(){
         rollDice()
-        if(lastThrow>currentThrow){
+        if(currentThrow<lastThrow){
             onAnswerCorrect()
         }else
             onAnswerIncorrect()
