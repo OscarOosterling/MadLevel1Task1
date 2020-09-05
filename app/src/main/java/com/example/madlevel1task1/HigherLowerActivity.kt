@@ -33,6 +33,14 @@ class HigherLowerActivity : AppCompatActivity() {
 
     private fun updateUI() {
         binding.tvLastThrow.text = getString(R.string.last_throw, lastThrow)
+        when(currentThrow){
+            1 -> binding.ivDiceRoll.setImageResource(R.drawable.dice1)
+            2 -> binding.ivDiceRoll.setImageResource(R.drawable.dice2)
+            3 -> binding.ivDiceRoll.setImageResource(R.drawable.dice3)
+            4 -> binding.ivDiceRoll.setImageResource(R.drawable.dice4)
+            5 -> binding.ivDiceRoll.setImageResource(R.drawable.dice5)
+            6 -> binding.ivDiceRoll.setImageResource(R.drawable.dice6)
+        }
     }
     private fun rollDice(){
         lastThrow = currentThrow
